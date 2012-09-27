@@ -1,16 +1,18 @@
+var slice = Array.prototype.slice;
+
 function kebab() {
   var queue = []
     , subscriptions = [];
 
   return {
-      enqueue : function (item) { 
-        queue.push(item); 
+      enqueue : function () { 
+        queue.push(slice.call(arguments)); 
         var sub = subscriptions.shift();
-        if (sub) sub(queue.shift());
+        if (sub) sub.apply(this, queue.shift());
       }
     , once    : function (cb) { 
-        var item = queue.shift();
-        return item ? cb(item) : subscriptions.push(cb);
+        var args = queue.shift();
+        return args ? cb.apply(this, args) : subscriptions.push(cb);
       }
   };
 }

@@ -4,18 +4,18 @@ var kebab = require('..')
   , test = require('tap').test;
 
 function setup () {
-  queue = kebab();
+  kb = kebab();
 }
 
 test('when an item is in the queue', function (t) {
   setup();
   t.plan(1);
 
-  queue.enqueue('uno');
+  kb.enqueue('uno');
 
   t.test('# once calls back immediately with that item', function (t) {
     t.plan(1);
-    queue.once(function (item) {
+    kb.once(function (item) {
       t.equal('uno', item);  
       t.end();
     })  
@@ -31,7 +31,7 @@ test('when no item is in the queue', function (t) {
 
     t.plan(1);
 
-    queue.once(function (item) {
+    kb.once(function (item) {
       calledBack = true;
     })  
 
@@ -52,7 +52,7 @@ test('when no item is in the queue', function (t) {
 
     t.plan(1);
 
-    queue.once(function (item) {
+    kb.once(function (item) {
       calledBack = true;
       calledWith = item;
     })  
@@ -60,7 +60,7 @@ test('when no item is in the queue', function (t) {
     t.test('# # and enqueue an item after', function (t) {
       t.plan(3);
 
-      queue.enqueue('uno');
+      kb.enqueue('uno');
 
       t.equal(calledBack, true, 'calls back');
       t.equal('uno', calledWith, 'with queued item');
@@ -69,14 +69,14 @@ test('when no item is in the queue', function (t) {
         t.plan(2);
 
         calledBack = false;
-        queue.enqueue('dos');
+        kb.enqueue('dos');
 
         t.equal(calledBack, false, 'does not call back again');
 
         t.test('# # # # and I listen once again', function (t) {
           t.plan(1);
 
-          queue.once(function (item) {
+          kb.once(function (item) {
             t.equal('dos', item, 'calls back with the other item');  
             t.end();
           })  
@@ -85,5 +85,24 @@ test('when no item is in the queue', function (t) {
     })
   })
 })
+
+test('when I queue multiple arguments', function (t) {
+  setup();
+  kb.enqueue(1, 2, 'foo', { uno: 'eins' });
+
+  t.test('and I listen once', function (t) {
+    t.plan(4);  
+
+    kb.once(function ($1, $2, foo, unoeins) {
+      t.equal($1, 1, 'passes first number');
+      t.equal($2, 2, 'passes second number');
+      t.equal(foo, 'foo', 'passes string');
+      t.deepEqual(unoeins, { uno: 'eins' }, 'passes object');
+      t.end();
+    })
+  })
+})
+
+
 
 

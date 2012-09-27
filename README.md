@@ -17,9 +17,9 @@ var kebab = require('kebab')
 
 ### enqueue
 
-***kebab.enqueue(item)***
+***kebab.enqueue(arg1 [, arg2, .., argn])***
 
-item is what ever you want to pass when a subscriber callback is called.
+arg1 .. argn are the arguments you want to pass when a subscriber callback is called.
 
 **Example:**
 
@@ -31,9 +31,11 @@ kb.enqueue('hello world');
 
 ***kebab.once(callback)***
 
-subscribe to a queued item. If one is currently available, callback will be invoked with it immediately.
+Subscribe to a queued be called back with queued arguments. 
 
-Otherwise the callback will be invoked one time when an item is enqueued in the future.
+If queue is currently holding arguments, callback will be invoked with them immediately.
+
+Otherwise the callback will be invoked one time when an arguments are enqueued in the future.
 
 **Example:**
 
