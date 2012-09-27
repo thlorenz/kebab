@@ -1,0 +1,25 @@
+{
+  "name": "kebab",
+  "version": "0.0.0",
+  "description": "Half queue half pubsub. Super small and simple queue that supports subscribers.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thlorenz/kebab.git"
+  },
+  "keywords": [
+    "pubsub",
+    "queue",
+    "micro",
+    "small",
+    "simple"
+  ],
+  "author": "Thorsten Lorenz",
+  "license": "BSD"
+}
