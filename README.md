@@ -1,4 +1,4 @@
-kebab [![Build Status](https://secure.travis-ci.org/thlorenz/kebab.png)](http://travis-ci.org/thlorenz/kebab)
+# kebab [![Build Status](https://secure.travis-ci.org/thlorenz/kebab.png)](http://travis-ci.org/thlorenz/kebab)
 
 Half queue half pubsub. Super small and simple queue that supports subscribers.
 
@@ -24,21 +24,21 @@ arg1 .. argn are the arguments you want to pass when a subscriber callback is ca
 **Example:**
 
 ```javascript
-kb.enqueue('hello world');
+kb.enqueue(1, 'hello world');
 ```
 
 ### once
 
 ***kebab.once(callback)***
 
-Subscribe to a queued be called back with queued arguments. 
+Subscribe to be called back with queued arguments. 
 
 If queue is currently holding arguments, callback will be invoked with them immediately.
 
-Otherwise the callback will be invoked one time when an arguments are enqueued in the future.
+Otherwise the callback will be invoked one time when arguments are enqueued in the future.
 
 **Example:**
 
 ```javascript
-kb.once(function (arg) { console.log('working on ', arg); });
+kb.once(function (num, s) { console.log('working on num: %s - %s', num, s); });
 ```
