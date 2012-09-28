@@ -66,7 +66,7 @@ Outputs:
 
 ## Run example
 
-### With nodejs:
+### With nodejs
 
 `npm run-script example`
 
