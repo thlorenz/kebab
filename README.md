@@ -66,15 +66,13 @@ Outputs:
 
 ## Run example
 
-### Server side:
+### With nodejs:
 
 `npm run-script example`
 
-### Browser
+### In the Browser
 
-`open index.html`
-
-
+`open example.html`
 
 ## Features
 
