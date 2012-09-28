@@ -22,7 +22,7 @@ function produce () {
 
 function consume (num) {
   kb.once(function (info, id) { 
-    console.log( 'Consumer %s handling item %d at (%ds:%dms).'
+    console.log( 'Consumer %s handling item %d produced at (%ds:%dms).'
       , num, id, info.now.getSeconds(), info.now.getMilliseconds()); 
     
     // younger consumers are lazy and therefore only consume once

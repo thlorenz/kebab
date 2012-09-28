@@ -20,7 +20,7 @@ function produce () {
 function consume (num) {
   kb.once(function (info, id) { 
     console.log(
-        'Consumer %s handling item %d at (%ds:%dms).'
+        'Consumer %s handling item %d produced at (%ds:%dms).'
       , num, id, info.now.getSeconds(), info.now.getMilliseconds()
     ); 
     
