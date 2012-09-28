@@ -1,7 +1,7 @@
 {
   "name": "kebab",
   "version": "0.0.2",
-  "description": "Half queue half pubsub. Super small and simple queue that supports subscribers.",
+  "description": "Half queue half pubsub. Super small (< 30 loc) and simple queue that supports subscribers.",
   "main": "index.js",
   "directories": {
     "test": "test"
