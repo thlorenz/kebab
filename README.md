@@ -60,13 +60,27 @@ Outputs:
 
 `npm install kebab`
 
-## Run example
-
-`npm run-script example`
-
 ## Run Tests
 
 `npm test`
+
+## Run example
+
+### Server side:
+
+`npm run-script example`
+
+### Browser
+
+`open index.html`
+
+
+
+## Features
+
+- works server side
+- works in the browser
+- supports async module loaders like requirejs
 
 ## API
 
