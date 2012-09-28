@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "tap ./test/*.js"
+    "test": "tap ./test/*.js",
+    "example": "node example"
   },
   "repository": {
     "type": "git",
