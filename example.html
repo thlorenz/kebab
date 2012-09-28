@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Kebab Producer/Consumer Example</title>
+    <script type="text/javascript" src="./kebab.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        
+        var kb = kebab()
+          , items = 10 
+          , consumers = 4
+          ;
+                            
+        function produce () {
+            var id = --items;
+
+            if (id) {
+                setTimeout(function () {
+                document.writeln('<p>Producer enqueueing item ' + id +'</p>');
+                kb.enqueue({ now: new Date() }, id);
+                produce();
+                }, 50);
+            }
+        }
+
+        function consume (num) {
+            kb.once(function (info, id) { 
+                document.writeln(
+                    '<p>Consumer ' + num + ' handling item ' + id + ' produced at (' + 
+                    info.now.getSeconds() + 's:' + info.now.getMilliseconds() + 'ms).</p>'
+                ); 
+                
+                // younger consumers are lazy and therefore only consume once
+                if (num > 1) {
+                // heavy work going on
+                setTimeout(function () { consume(num); }, 180);
+                }
+            });
+        }
+
+        for (var i = 0; i < consumers; i++) 
+        consume(i);
+
+        produce();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
